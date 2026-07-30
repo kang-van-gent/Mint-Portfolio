@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="_ds/modernist-3bdcf290-0b7c-480f-9aa6-850eb2dac5bc/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<style>
+  :root {
+    --font-heading: "Archivo", "IBM Plex Sans Thai", system-ui, sans-serif;
+    --font-body: "Archivo", "IBM Plex Sans Thai", system-ui, sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
+  a { color: var(--color-accent-700); text-decoration: none; }
+  a:hover { color: var(--color-accent); }
+  ::selection { background: var(--color-accent-200); }
+  .l-th, .l-en { display: contents; }
+  .l-en { display: none; }
+  html[data-lang="en"] .l-en { display: contents; }
+  html[data-lang="en"] .l-th { display: none; }
+  [data-langbtn="th"] { background: var(--color-accent); color: #fff; }
+  html[data-lang="en"] [data-langbtn="th"] { background: transparent; color: var(--color-text); }
+  html[data-lang="en"] [data-langbtn="en"] { background: var(--color-accent); color: #fff; }
+  html.gsap-ready [data-rv] { opacity: 0; }
+  [data-row]:hover { background: var(--color-neutral-200); }
+  [data-row]:hover [data-arrow] { transform: translateX(8px); }
+  [data-navlink]:hover { color: var(--color-accent); }
+  :focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:var(--color-bg)">
+
+  <header style="position:sticky;top:0;z-index:60;background:var(--color-bg);border-bottom:2px solid var(--color-divider)">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:64px;gap:24px">
+      <a href="#top" style="font-family:var(--font-heading);font-weight:900;font-size:17px;letter-spacing:-0.01em;color:var(--color-text);display:flex;align-items:baseline;gap:10px">MINT<span style="width:8px;height:8px;background:var(--color-accent);display:inline-block"></span></a>
+      <nav style="display:flex;gap:28px;align-items:center;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase">
+        <a data-navlink href="#about" style="color:var(--color-neutral-700)"><span class="l-th">เกี่ยวกับ</span><span class="l-en">About</span></a>
+        <a data-navlink href="#skills" style="color:var(--color-neutral-700)"><span class="l-th">ทักษะ</span><span class="l-en">Skills</span></a>
+        <a data-navlink href="#process" style="color:var(--color-neutral-700)"><span class="l-th">วิธีทำงาน</span><span class="l-en">Process</span></a>
+        <a data-navlink href="#companies" style="color:var(--color-neutral-700)"><span class="l-th">ประสบการณ์</span><span class="l-en">Experience</span></a>
+        <a data-navlink href="#career" style="color:var(--color-neutral-700)"><span class="l-th">เส้นทาง</span><span class="l-en">Path</span></a>
+        <a data-navlink href="#contact" style="color:var(--color-neutral-700)"><span class="l-th">ติดต่อ</span><span class="l-en">Contact</span></a>
+      </nav>
+      <div style="display:flex;border:2px solid var(--color-text);height:34px">
+        <button data-langbtn="th" onClick="{{ setTH }}" style="font-family:var(--font-heading);font-weight:800;font-size:12px;letter-spacing:0.08em;padding:0 12px;border:0;cursor:pointer;background:transparent">TH</button>
+        <button data-langbtn="en" onClick="{{ setEN }}" style="font-family:var(--font-heading);font-weight:800;font-size:12px;letter-spacing:0.08em;padding:0 12px;border:0;border-left:2px solid var(--color-text);cursor:pointer;background:transparent">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <section id="top" style="padding:var(--sec-pad,88px) 0 0">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px">
+      <div style="display:flex;align-items:baseline;gap:16px;font-size:11px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-accent-700)">
+        <span>Portfolio 2026</span>
+        <span style="flex:1;height:2px;background:var(--color-divider)" data-line></span>
+        <span style="color:var(--color-neutral-700)">Bangkok, TH</span>
+      </div>
+
+      <h1 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(40px,6.6vw,98px);line-height:0.96;letter-spacing:-0.035em;margin:40px 0 0;max-width:15ch;text-wrap:balance">
+        <span data-hero style="display:block"><span class="l-th">ดิจิทัลมาร์เก็ตติ้ง</span><span class="l-en">Digital marketing</span></span>
+        <span data-hero style="display:block"><span class="l-th">ที่เรียกความสนใจได้</span><span class="l-en">that earns attention,</span></span>
+        <span data-hero style="display:block;color:var(--color-accent)"><span class="l-th">และรักษาไว้ได้</span><span class="l-en">then keeps it.</span></span>
+      </h1>
+
+      <div style="display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:56px;margin-top:56px;align-items:end">
+        <div>
+          <p data-rv style="font-size:19px;line-height:1.55;margin:0;max-width:46ch;color:var(--color-neutral-800)">
+            <span class="l-th">มิ้นท์ · ธนพร ศรีวิไล — นักการตลาดดิจิทัลระดับเริ่มต้น ทำงานสายโซเชียลเป็นหลัก คิดแบบคนขายของ ถนัดสร้างคอมมูนิตี้ ดูแลแบรนด์บนมาร์เก็ตเพลส และทำงานกับ KOL</span>
+            <span class="l-en">Mint · Thanaporn Sriwilai — an entry-level digital marketer. Social-first, commerce-minded: community building, marketplace brand care, and working with KOLs.</span>
+          </p>
+          <div data-rv style="display:flex;gap:12px;margin-top:32px;flex-wrap:wrap">
+            <a class="btn btn-primary" href="#contact" style="text-decoration:none"><span class="l-th">ติดต่อฉัน</span><span class="l-en">Contact me</span></a>
+            <a class="btn btn-secondary" href="#" onClick="{{ downloadCV }}" style="text-decoration:none"><span class="l-th">ดาวน์โหลดเรซูเม่</span><span class="l-en">Download CV</span></a>
+          </div>
+          <dl data-rv style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:48px 0 0;border-top:2px solid var(--color-divider)">
+            <div style="padding:16px 16px 16px 0;border-right:2px solid var(--color-divider)">
+              <dt style="font-size:10px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-neutral-600)"><span class="l-th">ประสบการณ์</span><span class="l-en">Experience</span></dt>
+              <dd style="margin:6px 0 0;font-family:var(--font-heading);font-weight:800;font-size:15px"><span class="l-th">0–2 ปี</span><span class="l-en">0–2 years</span></dd>
+            </div>
+            <div style="padding:16px;border-right:2px solid var(--color-divider)">
+              <dt style="font-size:10px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-neutral-600)"><span class="l-th">พร้อมเริ่มงาน</span><span class="l-en">Available</span></dt>
+              <dd style="margin:6px 0 0;font-family:var(--font-heading);font-weight:800;font-size:15px"><span class="l-th">ก.ย. 2026</span><span class="l-en">Sep 2026</span></dd>
+            </div>
+            <div style="padding:16px">
+              <dt style="font-size:10px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-neutral-600)"><span class="l-th">ภาษา</span><span class="l-en">Languages</span></dt>
+              <dd style="margin:6px 0 0;font-family:var(--font-heading);font-weight:800;font-size:15px"><span class="l-th">ไทย / อังกฤษ</span><span class="l-en">Thai / English</span></dd>
+            </div>
+          </dl>
+        </div>
+        <figure data-rv class="grayscale" style="margin:0;aspect-ratio:4/5;overflow:hidden;border:2px solid var(--color-text)">
+          <img src="uploads/photo-1785397924904.jpg" alt="Mint" style="width:100%;height:100%;object-fit:cover;object-position:32% 30%;display:block">
+        </figure>
+      </div>
+      <div style="height:88px"></div>
+    </div>
+  </section>
+
+  <section id="about" style="border-top:2px solid var(--color-divider);padding:var(--sec-pad,96px) 0">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.1fr);gap:56px">
+      <div>
+        <div style="font-size:11px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-accent-700)">01 / <span class="l-th">เกี่ยวกับฉัน</span><span class="l-en">About me</span></div>
+      </div>
+      <div>
+        <h2 data-rv style="font-family:var(--font-heading);font-weight:800;font-size:clamp(26px,3vw,40px);line-height:1.12;letter-spacing:-0.02em;margin:0 0 28px;max-width:26ch">
+          <span class="l-th">เริ่มจากการเป็นคนที่อ่านคอมเมนต์ทุกอัน</span><span class="l-en">It starts with actually reading every comment.</span>
+        </h2>
+        <p data-rv style="font-size:17px;line-height:1.65;margin:0 0 20px;max-width:62ch;color:var(--color-neutral-800)">
+          <span class="l-th">ฉันเข้าสายการตลาดดิจิทัลจากการดูแลเพจเล็ก ๆ ของแบรนด์ครีเอเตอร์ไทย งานแรกคือตอบแชท จัดคิวโพสต์ และคอยฟังว่าคนพูดถึงแบรนด์ว่าอย่างไร ประสบการณ์นั้นทำให้ฉันเชื่อว่าคอนเทนต์ที่ดีเริ่มจากการฟังก่อน ไม่ใช่เริ่มจากบรีฟ</span>
+          <span class="l-en">I came into digital marketing by looking after small pages for Thai creator-led brands. The first job was answering DMs, queueing posts, and listening to how people talked about the brand. That taught me good content starts with listening, not with a brief.</span>
+        </p>
+        <p data-rv style="font-size:17px;line-height:1.65;margin:0;max-width:62ch;color:var(--color-neutral-800)">
+          <span class="l-th">ตอนนี้ฉันสนใจงานที่ต่อเรื่องเล่าของแบรนด์กับหน้าร้านออนไลน์ให้เป็นเส้นเดียวกัน — ตั้งแต่คลิปแรกที่คนเห็น ไปจนถึงหน้าสินค้าที่คนกดซื้อ ฉันชอบทีมที่ยอมทดลอง ยอมรับว่าอะไรไม่เวิร์ก และแก้เร็ว</span>
+          <span class="l-en">Now I'm drawn to work that lines up a brand's story with its shopfront — from the first clip someone sees to the product page they tap. I like teams that test things, admit what didn't work, and fix it quickly.</span>
+        </p>
+        <ul data-rv style="list-style:none;padding:0;margin:36px 0 0;display:flex;flex-wrap:wrap;gap:8px">
+          <li class="tag tag-accent"><span class="l-th">โซเชียลเป็นหลัก</span><span class="l-en">Social-first</span></li>
+          <li class="tag tag-outline"><span class="l-th">คิดแบบคนขายของ</span><span class="l-en">Commerce-minded</span></li>
+          <li class="tag tag-outline"><span class="l-th">ทำงานกับครีเอเตอร์</span><span class="l-en">Creator-friendly</span></li>
+          <li class="tag tag-neutral"><span class="l-th">ไทย / อังกฤษ</span><span class="l-en">Thai / English</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" style="border-top:2px solid var(--color-divider);padding:var(--sec-pad,96px) 0">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.1fr);gap:56px;align-items:start">
+      <div style="position:sticky;top:112px">
+        <div style="font-size:11px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-accent-700)">02 / <span class="l-th">ทักษะของฉัน</span><span class="l-en">My skills</span></div>
+        <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(24px,2.6vw,34px);line-height:1.12;letter-spacing:-0.02em;margin:20px 0 24px">
+          <span class="l-th">สี่อย่างที่ทำได้จริง</span><span class="l-en">Four things I can actually do</span>
+        </h2>
+        <div style="height:4px;background:var(--color-neutral-300);width:100%;overflow:hidden">
+          <div data-skillbar style="height:100%;width:0%;background:var(--color-accent)"></div>
+        </div>
+        <p style="font-size:13px;line-height:1.6;color:var(--color-neutral-700);margin:16px 0 0;max-width:30ch">
+          <span class="l-th">ระดับความชำนาญเขียนตามงานที่ทำมาจริง ไม่ใช่ตามคอร์สที่เรียน</span><span class="l-en">Levels reflect work I've shipped, not courses I've watched.</span>
+        </p>
+      </div>
+      <div style="display:flex;flex-direction:column;border-top:2px solid var(--color-divider)">
+
+        <article data-rv style="padding:36px 0;border-bottom:2px solid var(--color-divider);display:grid;grid-template-columns:56px minmax(0,1fr);gap:24px">
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:28px;color:var(--color-accent);line-height:1">01</div>
+          <div>
+            <h3 style="font-family:var(--font-heading);font-weight:800;font-size:23px;letter-spacing:-0.01em;margin:0 0 10px"><span class="l-th">โซเชียลมีเดียและคอมมูนิตี้</span><span class="l-en">Social media &amp; community</span></h3>
+            <p style="font-size:16px;line-height:1.6;margin:0 0 18px;max-width:56ch;color:var(--color-neutral-800)"><span class="l-th">วางปฏิทินคอนเทนต์รายสัปดาห์ เขียนแคปชันสองภาษา ดูแลอินบ็อกซ์และคอมเมนต์ให้เป็นเสียงเดียวกับแบรนด์ และสรุปสิ่งที่คอมมูนิตี้บอกกลับไปให้ทีม</span><span class="l-en">Weekly content calendars, bilingual captions, an inbox and comment section that sounds like the brand, and a weekly read-back of what the community is telling us.</span></p>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px">
+              <li class="tag tag-neutral">TikTok</li><li class="tag tag-neutral">Instagram</li><li class="tag tag-neutral">Facebook</li><li class="tag tag-neutral">LINE OA</li><li class="tag tag-neutral">Metricool</li>
+            </ul>
+          </div>
+        </article>
+
+        <article data-rv style="padding:36px 0;border-bottom:2px solid var(--color-divider);display:grid;grid-template-columns:56px minmax(0,1fr);gap:24px">
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:28px;color:var(--color-accent);line-height:1">02</div>
+          <div>
+            <h3 style="font-family:var(--font-heading);font-weight:800;font-size:23px;letter-spacing:-0.01em;margin:0 0 10px"><span class="l-th">อีคอมเมิร์ซและมาร์เก็ตเพลส</span><span class="l-en">E-commerce &amp; marketplace</span></h3>
+            <p style="font-size:16px;line-height:1.6;margin:0 0 18px;max-width:56ch;color:var(--color-neutral-800)"><span class="l-th">จัดหมวดสินค้าและเขียนรายละเอียดให้อ่านรู้เรื่อง เตรียมภาพและแบนเนอร์ตามรอบแคมเปญของแพลตฟอร์ม ประสานสต็อกกับทีมขาย และดูว่าหน้าไหนคนออกกลางทาง</span><span class="l-en">Catalogue structure and listing copy that reads like a human wrote it, campaign banners on the platform's calendar, stock coordination with sales, and spotting where people drop off.</span></p>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px">
+              <li class="tag tag-neutral">Shopee Seller</li><li class="tag tag-neutral">Lazada Seller</li><li class="tag tag-neutral">TikTok Shop</li><li class="tag tag-neutral">GA4</li>
+            </ul>
+          </div>
+        </article>
+
+        <article data-rv style="padding:36px 0;border-bottom:2px solid var(--color-divider);display:grid;grid-template-columns:56px minmax(0,1fr);gap:24px">
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:28px;color:var(--color-accent);line-height:1">03</div>
+          <div>
+            <h3 style="font-family:var(--font-heading);font-weight:800;font-size:23px;letter-spacing:-0.01em;margin:0 0 10px"><span class="l-th">อินฟลูเอนเซอร์และ KOL</span><span class="l-en">Influencer &amp; KOL</span></h3>
+            <p style="font-size:16px;line-height:1.6;margin:0 0 18px;max-width:56ch;color:var(--color-neutral-800)"><span class="l-th">คัดครีเอเตอร์จากคนที่ดูคลิปจริง ไม่ใช่จากยอดผู้ติดตาม เขียนบรีฟที่ให้พื้นที่ครีเอเตอร์เป็นตัวเอง จัดคิวส่งงาน ตรวจดราฟต์ และดูแลความสัมพันธ์ยาว ๆ</span><span class="l-en">Choosing creators by who actually watches them, not by follower count. Briefs that leave room for their own voice, delivery scheduling, draft review, and relationships that last past one campaign.</span></p>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px">
+              <li class="tag tag-neutral"><span class="l-th">คัดเลือกครีเอเตอร์</span><span class="l-en">Sourcing</span></li><li class="tag tag-neutral"><span class="l-th">เขียนบรีฟ</span><span class="l-en">Briefing</span></li><li class="tag tag-neutral"><span class="l-th">ต่อรอง</span><span class="l-en">Negotiation</span></li><li class="tag tag-neutral">Notion</li>
+            </ul>
+          </div>
+        </article>
+
+        <article data-rv style="padding:36px 0;display:grid;grid-template-columns:56px minmax(0,1fr);gap:24px">
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:28px;color:var(--color-accent);line-height:1">04</div>
+          <div>
+            <h3 style="font-family:var(--font-heading);font-weight:800;font-size:23px;letter-spacing:-0.01em;margin:0 0 10px"><span class="l-th">กลยุทธ์แบรนด์และแคมเปญ</span><span class="l-en">Brand &amp; campaign strategy</span></h3>
+            <p style="font-size:16px;line-height:1.6;margin:0 0 18px;max-width:56ch;color:var(--color-neutral-800)"><span class="l-th">ช่วยทีมตกลงกันให้ได้ว่าแบรนด์พูดกับใครและพูดแบบไหน แล้วแปลออกมาเป็นแคมเปญที่มีจุดเริ่ม จุดจบ และเหตุผลว่าทำไมต้องตอนนี้</span><span class="l-en">Helping a team agree on who the brand is talking to and how it sounds, then turning that into a campaign with a start, an end, and a reason it's happening now.</span></p>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px">
+              <li class="tag tag-neutral"><span class="l-th">โทนและเสียงแบรนด์</span><span class="l-en">Tone of voice</span></li><li class="tag tag-neutral"><span class="l-th">วางแคมเปญ</span><span class="l-en">Campaign planning</span></li><li class="tag tag-neutral">Figma</li><li class="tag tag-neutral">Canva</li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="process" style="border-top:2px solid var(--color-divider)">
+    <div data-wkwrap style="height:100vh;min-height:620px;overflow:hidden;position:relative;display:flex;align-items:center">
+      <div data-wktrack style="display:flex;align-items:stretch;width:max-content;height:70vh;min-height:440px">
+
+        <div style="width:max(32px,calc((100vw - 1240px)/2 + 32px));flex:none"></div>
+
+        <div style="width:min(70vw,520px);flex:none;box-sizing:border-box;padding:0 48px 0 0;display:flex;flex-direction:column;justify-content:center">
+          <div style="font-size:11px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-accent-700)">03 / <span class="l-th">วิธีทำงานของฉัน</span><span class="l-en">How I work</span></div>
+          <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(28px,3.4vw,46px);line-height:1.08;letter-spacing:-0.025em;margin:20px 0 20px">
+            <span class="l-th">หนึ่งสัปดาห์ ของฉันหน้าตาแบบนี้</span><span class="l-en">One week, from the inside</span>
+          </h2>
+          <p style="font-size:16px;line-height:1.6;color:var(--color-neutral-800);margin:0;max-width:34ch">
+            <span class="l-th">ไม่ได้มีขั้นตอนหรูหรา มีแค่จังหวะที่ทำซ้ำได้ทุกสัปดาห์ — เลื่อนต่อไปทางขวา</span><span class="l-en">No fancy framework — just a rhythm that repeats every week. Keep scrolling right.</span>
+          </p>
+          <div style="margin-top:28px;display:flex;align-items:center;gap:12px;font-size:11px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-neutral-600)">
+            <span><span class="l-th">เลื่อน</span><span class="l-en">Scroll</span></span>
+            <span style="flex:1;height:2px;background:var(--color-divider);max-width:120px"></span>
+            <span>&#8594;</span>
+          </div>
+        </div>
+
+        <div style="width:min(70vw,400px);flex:none;box-sizing:border-box;border-left:2px solid var(--color-divider);padding:0 36px;display:flex;flex-direction:column;justify-content:center;gap:14px">
+          <div style="font-family:var(--font-heading);font-weight:900;font-size:13px;letter-spacing:0.2em;color:var(--color-accent)">MON</div>
+          <h3 style="font-family:var(--font-heading);font-weight:800;font-size:30px;letter-spacing:-0.02em;margin:0"><span class="l-th">ฟัง</span><span class="l-en">Listen</span></h3>
+          <p style="font-size:16px;line-height:1.6;margin:0;color:var(--color-neutral-800)"><span class="l-th">อ่านคอมเมนต์และแชทที่ค้างจากเสาร์อาทิตย์ ดูว่าคลิปไหนคนดูจนจบ เช็กว่าคู่แข่งทำอะไร แล้วจดสามข้อที่น่าลองสัปดาห์นี้</span><span class="l-en">Clear the weekend's comments and DMs, see which clips people finished, check what competitors shipped, then write down three things worth trying this week.</span></p>
+          <ul style="list-style:none;padding:0;margin:8px 0 0;display:flex;flex-wrap:wrap;gap:6px"><li class="tag tag-outline">Meta Business Suite</li><li class="tag tag-outline">GA4</li></ul>
+        </div>
+
+        <div style="width:min(70vw,400px);flex:none;box-sizing:border-box;border-left:2px solid var(--color-divider);padding:0 36px;display:flex;flex-direction:column;justify-content:center;gap:14px">
+          <div style="font-family:var(--font-heading);font-weight:900;font-size:13px;letter-spacing:0.2em;color:var(--color-accent)">TUE</div>
+          <h3 style="font-family:var(--font-heading);font-weight:800;font-size:30px;letter-spacing:-0.02em;margin:0"><span class="l-th">วางแผน</span><span class="l-en">Plan</span></h3>
+          <p style="font-size:16px;line-height:1.6;margin:0;color:var(--color-neutral-800)"><span class="l-th">ลงปฏิทินคอนเทนต์ให้ครบสัปดาห์ เขียนบรีฟสั้นให้ครีเอเตอร์และทีมกราฟิก ตกลงกับฝ่ายขายว่าอาทิตย์นี้จะดันสินค้าตัวไหน</span><span class="l-en">Fill the calendar for the week, write short briefs for creators and design, and agree with sales on which product we're pushing.</span></p>
+          <ul style="list-style:none;padding:0;margin:8px 0 0;display:flex;flex-wrap:wrap;gap:6px"><li class="tag tag-outline">Notion</li><li class="tag tag-outline">Google Sheets</li></ul>
+        </div>
+
+        <div style="width:min(70vw,400px);flex:none;box-sizing:border-box;border-left:2px solid var(--color-divider);padding:0 36px;display:flex;flex-direction:column;justify-content:center;gap:14px">
+          <div style="font-family:var(--font-heading);font-weight:900;font-size:13px;letter-spacing:0.2em;color:var(--color-accent)">WED</div>
+          <h3 style="font-family:var(--font-heading);font-weight:800;font-size:30px;letter-spacing:-0.02em;margin:0"><span class="l-th">ลงมือทำ</span><span class="l-en">Make</span></h3>
+          <p style="font-size:16px;line-height:1.6;margin:0;color:var(--color-neutral-800)"><span class="l-th">ถ่ายและตัดคลิปสั้นเอง เขียนแคปชันสองภาษา ทำแบนเนอร์หน้าร้าน และตรวจดราฟต์ที่ครีเอเตอร์ส่งกลับมา</span><span class="l-en">Shoot and cut short clips myself, write captions in both languages, build the storefront banners, and review creator drafts.</span></p>
+          <ul style="list-style:none;padding:0;margin:8px 0 0;display:flex;flex-wrap:wrap;gap:6px"><li class="tag tag-outline">CapCut</li><li class="tag tag-outline">Canva</li><li class="tag tag-outline">Figma</li></ul>
+        </div>
+
+        <div style="width:min(70vw,400px);flex:none;box-sizing:border-box;border-left:2px solid var(--color-divider);padding:0 36px;display:flex;flex-direction:column;justify-content:center;gap:14px">
+          <div style="font-family:var(--font-heading);font-weight:900;font-size:13px;letter-spacing:0.2em;color:var(--color-accent)">THU</div>
+          <h3 style="font-family:var(--font-heading);font-weight:800;font-size:30px;letter-spacing:-0.02em;margin:0"><span class="l-th">ปล่อยงาน</span><span class="l-en">Ship</span></h3>
+          <p style="font-size:16px;line-height:1.6;margin:0;color:var(--color-neutral-800)"><span class="l-th">ตั้งคิวโพสต์ ตรวจลิงก์และราคาบนหน้าสินค้าอีกรอบ เปิดแคมเปญ แล้วเฝ้าอินบ็อกซ์ในสองชั่วโมงแรกซึ่งเป็นช่วงที่คนถามมากที่สุด</span><span class="l-en">Queue the posts, double-check links and prices on the listings, open the campaign, then sit on the inbox for the first two hours — that's when the questions come.</span></p>
+          <ul style="list-style:none;padding:0;margin:8px 0 0;display:flex;flex-wrap:wrap;gap:6px"><li class="tag tag-outline">TikTok Ads Manager</li><li class="tag tag-outline">LINE OA</li></ul>
+        </div>
+
+        <div style="width:min(70vw,420px);flex:none;box-sizing:border-box;border-left:2px solid var(--color-divider);padding:0 36px;display:flex;flex-direction:column;justify-content:center;gap:14px;background:var(--color-accent);color:#fff">
+          <div style="font-family:var(--font-heading);font-weight:900;font-size:13px;letter-spacing:0.2em;color:var(--color-accent-200)">FRI</div>
+          <h3 style="font-family:var(--font-heading);font-weight:800;font-size:30px;letter-spacing:-0.02em;margin:0;color:#fff"><span class="l-th">อ่านผลและแก้</span><span class="l-en">Read &amp; adjust</span></h3>
+          <p style="font-size:16px;line-height:1.6;margin:0;color:var(--color-accent-100)"><span class="l-th">สรุปสัปดาห์เป็นหน้าเดียว บอกตรง ๆ ว่าอะไรไม่เวิร์กและจะเลิกทำอะไร ที่เหลือคือคิวของสัปดาห์หน้า</span><span class="l-en">A one-page weekly summary, honest about what didn't work and what we're dropping. Whatever's left becomes next week's queue.</span></p>
+          <ul style="list-style:none;padding:0;margin:8px 0 0;display:flex;flex-wrap:wrap;gap:6px"><li class="tag tag-outline" style="border-color:var(--color-accent-200);color:#fff">Looker Studio</li><li class="tag tag-outline" style="border-color:var(--color-accent-200);color:#fff">Slides</li></ul>
+        </div>
+
+        <div style="width:max(32px,calc((100vw - 1240px)/2 + 32px));flex:none"></div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="companies" style="border-top:2px solid var(--color-divider);padding:var(--sec-pad,96px) 0">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:44px">
+        <div>
+          <div style="font-size:11px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-accent-700)">04 / <span class="l-th">ที่เคยทำงาน</span><span class="l-en">Where I've worked</span></div>
+          <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(26px,3vw,40px);line-height:1.12;letter-spacing:-0.025em;margin:18px 0 0">
+            <span class="l-th">สี่ที่ ที่สอนอะไรต่างกัน</span><span class="l-en">Four places, four different lessons</span>
+          </h2>
+        </div>
+        <p style="font-size:13px;line-height:1.6;color:var(--color-neutral-700);margin:0;max-width:30ch">
+          <span class="l-th">ชื่อบริษัทเป็นข้อมูลตัวอย่าง รอแทนด้วยข้อมูลจริง</span><span class="l-en">Company names are placeholder data, ready to be swapped for the real thing.</span>
+        </p>
+      </div>
+
+      <div style="border-top:2px solid var(--color-divider)">
+        <div data-row data-rv style="display:grid;grid-template-columns:110px minmax(0,1.1fr) minmax(0,1fr) minmax(0,1.4fr) 32px;gap:24px;align-items:start;padding:28px 12px 28px 0;border-bottom:2px solid var(--color-divider);transition:background 180ms cubic-bezier(0.2,0,0,1)">
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:0.06em;color:var(--color-neutral-600);padding-top:4px">2024</div>
+          <h3 style="font-family:var(--font-heading);font-weight:800;font-size:21px;letter-spacing:-0.01em;margin:0">Siriwat Group</h3>
+          <div style="font-size:14px;font-weight:700;color:var(--color-accent-700);padding-top:3px"><span class="l-th">นักศึกษาฝึกงานการตลาด</span><span class="l-en">Marketing Intern</span></div>
+          <p style="font-size:15px;line-height:1.55;margin:0;color:var(--color-neutral-800)"><span class="l-th">สร้างเสียงของแบรนด์บน TikTok ขึ้นใหม่ตั้งแต่ศูนย์ จนกลายเป็นช่องทางหลักที่คนใหม่รู้จักแบรนด์</span><span class="l-en">Rebuilt the brand's TikTok voice from scratch; it became the main channel where new people found them.</span></p>
+          <div data-arrow style="font-size:18px;color:var(--color-accent);transition:transform 200ms cubic-bezier(0.2,0,0,1);text-align:right">&#8594;</div>
+        </div>
+
+        <div data-row data-rv style="display:grid;grid-template-columns:110px minmax(0,1.1fr) minmax(0,1fr) minmax(0,1.4fr) 32px;gap:24px;align-items:start;padding:28px 12px 28px 0;border-bottom:2px solid var(--color-divider);transition:background 180ms cubic-bezier(0.2,0,0,1)">
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:0.06em;color:var(--color-neutral-600);padding-top:4px">2024–2025</div>
+          <h3 style="font-family:var(--font-heading);font-weight:800;font-size:21px;letter-spacing:-0.01em;margin:0">Nara Beauty Co.</h3>
+          <div style="font-size:14px;font-weight:700;color:var(--color-accent-700);padding-top:3px"><span class="l-th">ผู้ช่วยดูแลโซเชียลมีเดีย</span><span class="l-en">Social Media Assistant</span></div>
+          <p style="font-size:15px;line-height:1.55;margin:0;color:var(--color-neutral-800)"><span class="l-th">ดูแลปฏิทินคอนเทนต์รายวันและอินบ็อกซ์คอมมูนิตี้ ทำให้การตอบกลับจากที่เคยข้ามวัน กลายเป็นตอบภายในวันเดียวกัน</span><span class="l-en">Ran the daily content calendar and community inbox; replies went from days late to same-day.</span></p>
+          <div data-arrow style="font-size:18px;color:var(--color-accent);transition:transform 200ms cubic-bezier(0.2,0,0,1);text-align:right">&#8594;</div>
+        </div>
+
+        <div data-row data-rv style="display:grid;grid-template-columns:110px minmax(0,1.1fr) minmax(0,1fr) minmax(0,1.4fr) 32px;gap:24px;align-items:start;padding:28px 12px 28px 0;border-bottom:2px solid var(--color-divider);transition:background 180ms cubic-bezier(0.2,0,0,1)">
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:0.06em;color:var(--color-neutral-600);padding-top:4px">2025</div>
+          <h3 style="font-family:var(--font-heading);font-weight:800;font-size:21px;letter-spacing:-0.01em;margin:0">Baan Kraam Home</h3>
+          <div style="font-size:14px;font-weight:700;color:var(--color-accent-700);padding-top:3px"><span class="l-th">ผู้ประสานงานอีคอมเมิร์ซ</span><span class="l-en">E-commerce Coordinator</span></div>
+          <p style="font-size:15px;line-height:1.55;margin:0;color:var(--color-neutral-800)"><span class="l-th">จัดหมวดสินค้าและเขียนรายละเอียดบน Shopee ใหม่ทั้งหมด จนหน้าสินค้าอ่านแล้วรู้สึกเป็นแบรนด์เดียวกัน</span><span class="l-en">Cleaned up the Shopee catalogue and rewrote the copy, so listings finally read like one brand.</span></p>
+          <div data-arrow style="font-size:18px;color:var(--color-accent);transition:transform 200ms cubic-bezier(0.2,0,0,1);text-align:right">&#8594;</div>
+        </div>
+
+        <div data-row data-rv style="display:grid;grid-template-columns:110px minmax(0,1.1fr) minmax(0,1fr) minmax(0,1.4fr) 32px;gap:24px;align-items:start;padding:28px 12px 28px 0;border-bottom:2px solid var(--color-divider);transition:background 180ms cubic-bezier(0.2,0,0,1)">
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:0.06em;color:var(--color-neutral-600);padding-top:4px">2025–2026</div>
+          <h3 style="font-family:var(--font-heading);font-weight:800;font-size:21px;letter-spacing:-0.01em;margin:0">Studio Praan</h3>
+          <div style="font-size:14px;font-weight:700;color:var(--color-accent-700);padding-top:3px"><span class="l-th">ฟรีแลนซ์ดูแลแคมเปญ</span><span class="l-en">Freelance Campaign Support</span></div>
+          <p style="font-size:15px;line-height:1.55;margin:0;color:var(--color-neutral-800)"><span class="l-th">คัดเลือกและบรีฟ KOL ให้แคมเปญเปิดตัวสองรอบตามฤดูกาล พร้อมคุมคิวส่งงานให้ตรงวันปล่อย</span><span class="l-en">Sourced and briefed KOLs for two seasonal launches, keeping delivery on schedule for launch day.</span></p>
+          <div data-arrow style="font-size:18px;color:var(--color-accent);transition:transform 200ms cubic-bezier(0.2,0,0,1);text-align:right">&#8594;</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="career" style="border-top:2px solid var(--color-divider);padding:var(--sec-pad,96px) 0">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.1fr);gap:56px;align-items:start">
+      <div style="position:sticky;top:112px">
+        <div style="font-size:11px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-accent-700)">05 / <span class="l-th">เส้นทางอาชีพ</span><span class="l-en">Career path</span></div>
+        <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(24px,2.6vw,34px);line-height:1.12;letter-spacing:-0.02em;margin:20px 0 0">
+          <span class="l-th">จากคนตอบแชท ไปเป็นคนวางแผน</span><span class="l-en">From answering DMs to writing the plan</span>
+        </h2>
+      </div>
+
+      <div style="position:relative;padding-left:36px">
+        <div style="position:absolute;left:5px;top:8px;bottom:8px;width:2px;background:var(--color-neutral-300)"></div>
+        <div data-tlline style="position:absolute;left:5px;top:8px;width:2px;height:0;background:var(--color-accent);transform-origin:top"></div>
+
+        <article data-rv data-tlitem style="position:relative;padding-bottom:44px">
+          <span data-tldot style="position:absolute;left:-36px;top:6px;width:12px;height:12px;background:var(--color-neutral-400)"></span>
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:0.1em;color:var(--color-neutral-600)">2022</div>
+          <h3 style="font-family:var(--font-heading);font-weight:800;font-size:22px;letter-spacing:-0.01em;margin:8px 0 6px"><span class="l-th">เริ่มเรียนนิเทศศาสตร์</span><span class="l-en">Started Communication Arts</span></h3>
+          <p style="font-size:15px;line-height:1.6;margin:0;max-width:52ch;color:var(--color-neutral-800)"><span class="l-th">เข้าเรียนสาขาการสื่อสารการตลาด และเริ่มรับดูแลเพจเล็ก ๆ ของร้านเพื่อนไปพร้อมกัน</span><span class="l-en">Enrolled in marketing communications and started looking after a friend's small shop page on the side.</span></p>
+        </article>
+
+        <article data-rv data-tlitem style="position:relative;padding-bottom:44px">
+          <span data-tldot style="position:absolute;left:-36px;top:6px;width:12px;height:12px;background:var(--color-neutral-400)"></span>
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:0.1em;color:var(--color-neutral-600)">2024</div>
+          <h3 style="font-family:var(--font-heading);font-weight:800;font-size:22px;letter-spacing:-0.01em;margin:8px 0 6px"><span class="l-th">ฝึกงานการตลาดที่แรก</span><span class="l-en">First marketing internship</span></h3>
+          <p style="font-size:15px;line-height:1.6;margin:0;max-width:52ch;color:var(--color-neutral-800)"><span class="l-th">Siriwat Group — ได้เรียนรู้ว่าคอนเทนต์ที่คนดูจนจบ ต่างจากคอนเทนต์ที่แค่สวยอย่างไร</span><span class="l-en">Siriwat Group — learned the difference between content people finish and content that merely looks good.</span></p>
+        </article>
+
+        <article data-rv data-tlitem style="position:relative;padding-bottom:44px">
+          <span data-tldot style="position:absolute;left:-36px;top:6px;width:12px;height:12px;background:var(--color-neutral-400)"></span>
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:0.1em;color:var(--color-neutral-600)">2024–2025</div>
+          <h3 style="font-family:var(--font-heading);font-weight:800;font-size:22px;letter-spacing:-0.01em;margin:8px 0 6px"><span class="l-th">ผู้ช่วยดูแลโซเชียลมีเดีย</span><span class="l-en">Social Media Assistant</span></h3>
+          <p style="font-size:15px;line-height:1.6;margin:0;max-width:52ch;color:var(--color-neutral-800)"><span class="l-th">Nara Beauty Co. — งานประจำเต็มเวลาแรก ได้ดูแลปฏิทินคอนเทนต์และคอมมูนิตี้ด้วยตัวเอง</span><span class="l-en">Nara Beauty Co. — first full-time role, owning the content calendar and the community myself.</span></p>
+        </article>
+
+        <article data-rv data-tlitem style="position:relative;padding-bottom:44px">
+          <span data-tldot style="position:absolute;left:-36px;top:6px;width:12px;height:12px;background:var(--color-neutral-400)"></span>
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:0.1em;color:var(--color-neutral-600)">2025</div>
+          <h3 style="font-family:var(--font-heading);font-weight:800;font-size:22px;letter-spacing:-0.01em;margin:8px 0 6px"><span class="l-th">ขยับมาสายอีคอมเมิร์ซ</span><span class="l-en">Moved into e-commerce</span></h3>
+          <p style="font-size:15px;line-height:1.6;margin:0;max-width:52ch;color:var(--color-neutral-800)"><span class="l-th">Baan Kraam Home — ได้เห็นว่าเรื่องเล่าของแบรนด์กับหน้าสินค้าต้องพูดเรื่องเดียวกัน ไม่ใช่คนละเรื่อง</span><span class="l-en">Baan Kraam Home — saw that the brand story and the product page have to say the same thing.</span></p>
+        </article>
+
+        <article data-rv data-tlitem style="position:relative;padding-bottom:44px">
+          <span data-tldot style="position:absolute;left:-36px;top:6px;width:12px;height:12px;background:var(--color-neutral-400)"></span>
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:0.1em;color:var(--color-neutral-600)">2026</div>
+          <h3 style="font-family:var(--font-heading);font-weight:800;font-size:22px;letter-spacing:-0.01em;margin:8px 0 6px"><span class="l-th">ฟรีแลนซ์และเรียนเพิ่ม</span><span class="l-en">Freelance &amp; upskilling</span></h3>
+          <p style="font-size:15px;line-height:1.6;margin:0;max-width:52ch;color:var(--color-neutral-800)"><span class="l-th">รับงานแคมเปญเป็นโปรเจกต์ พร้อมเรียน Google Analytics 4 และพื้นฐานการอ่านข้อมูลอย่างจริงจัง</span><span class="l-en">Taking campaign work project by project while properly learning Google Analytics 4 and how to read data.</span></p>
+        </article>
+
+        <article data-rv data-tlitem style="position:relative">
+          <span data-tldot style="position:absolute;left:-36px;top:6px;width:12px;height:12px;background:var(--color-accent)"></span>
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:0.1em;color:var(--color-accent)"><span class="l-th">ต่อไป</span><span class="l-en">Next</span></div>
+          <h3 style="font-family:var(--font-heading);font-weight:800;font-size:26px;letter-spacing:-0.02em;margin:8px 0 6px;color:var(--color-accent)"><span class="l-th">Digital Marketing Executive</span><span class="l-en">Digital Marketing Executive</span></h3>
+          <p style="font-size:15px;line-height:1.6;margin:0;max-width:52ch;color:var(--color-neutral-800)"><span class="l-th">อยากอยู่ในทีมที่ให้ฉันดูแลช่องทางหนึ่งได้เต็มตัว ตั้งแต่วางแผนจนถึงอ่านผล และมีคนที่เก่งกว่าให้เรียนรู้ด้วย</span><span class="l-en">Looking for a team where I can own one channel end to end — plan it, ship it, read the results — with people better than me to learn from.</span></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <sc-if value="{{ showSalary }}" hint-placeholder-val="{{ true }}">
+  <section id="salary" style="border-top:2px solid var(--color-divider);padding:var(--sec-pad,96px) 0;background:var(--color-surface)">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.1fr);gap:56px;align-items:start">
+      <div>
+        <div style="font-size:11px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-accent-700)">06 / <span class="l-th">เงินเดือนที่คาดหวัง</span><span class="l-en">Salary expectation</span></div>
+      </div>
+      <div>
+        <h2 data-rv style="font-family:var(--font-heading);font-weight:800;font-size:clamp(26px,3vw,40px);line-height:1.12;letter-spacing:-0.025em;margin:0 0 12px;max-width:26ch">
+          <span class="l-th">พูดตรง ๆ ตั้งแต่ต้น จะได้ไม่เสียเวลาทั้งสองฝ่าย</span><span class="l-en">Stated up front, so neither of us wastes time.</span>
+        </h2>
+        <div data-rv style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:32px 0 8px;border-top:2px solid var(--color-divider);padding-top:32px">
+          <span style="font-family:var(--font-heading);font-weight:800;font-size:clamp(38px,5.4vw,72px);line-height:1;letter-spacing:-0.035em;color:var(--color-accent)">28,000&#8202;–&#8202;35,000</span>
+          <span style="font-family:var(--font-heading);font-weight:800;font-size:18px;letter-spacing:0.04em;color:var(--color-neutral-700)">THB / <span class="l-th">เดือน</span><span class="l-en">month</span></span>
+        </div>
+        <p data-rv style="font-size:15px;line-height:1.6;color:var(--color-neutral-700);margin:0 0 40px;max-width:52ch">
+          <span class="l-th">ช่วงนี้อ้างอิงตำแหน่งระดับเริ่มต้นในกรุงเทพฯ แบบเต็มเวลา สำหรับงานฟรีแลนซ์คิดเป็นรายโปรเจกต์ คุยกันได้</span><span class="l-en">Based on entry-level full-time roles in Bangkok. Freelance is priced per project — happy to discuss.</span>
+        </p>
+        <h3 data-rv style="font-size:11px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-neutral-600);margin:0 0 20px"><span class="l-th">สิ่งที่ยืดหยุ่นได้</span><span class="l-en">What's negotiable</span></h3>
+        <div data-rv style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));border-top:2px solid var(--color-divider)">
+          <div style="padding:22px 24px 22px 0;border-bottom:2px solid var(--color-divider);border-right:2px solid var(--color-divider)">
+            <div style="font-family:var(--font-heading);font-weight:800;font-size:16px;margin-bottom:6px"><span class="l-th">สวัสดิการ</span><span class="l-en">Benefits</span></div>
+            <p style="font-size:14px;line-height:1.55;margin:0;color:var(--color-neutral-800)"><span class="l-th">ประกันสุขภาพและงบเรียนรู้ต่อปี มีน้ำหนักกับฉันเทียบเท่าตัวเลขเงินเดือน</span><span class="l-en">Health cover and a yearly learning budget weigh as much as the number itself.</span></p>
+          </div>
+          <div style="padding:22px 24px;border-bottom:2px solid var(--color-divider);border-right:2px solid var(--color-divider)">
+            <div style="font-family:var(--font-heading);font-weight:800;font-size:16px;margin-bottom:6px"><span class="l-th">รูปแบบการทำงาน</span><span class="l-en">Where I work</span></div>
+            <p style="font-size:14px;line-height:1.55;margin:0;color:var(--color-neutral-800)"><span class="l-th">ไฮบริดคือแบบที่ชอบที่สุด เข้าออฟฟิศได้เต็มสัปดาห์ถ้าทีมต้องการ</span><span class="l-en">Hybrid suits me best; full-time on-site is fine if the team needs it.</span></p>
+          </div>
+          <div style="padding:22px 24px;border-bottom:2px solid var(--color-divider)">
+            <div style="font-family:var(--font-heading);font-weight:800;font-size:16px;margin-bottom:6px"><span class="l-th">ระยะเวลาแจ้งลาออก</span><span class="l-en">Notice period</span></div>
+            <p style="font-size:14px;line-height:1.55;margin:0;color:var(--color-neutral-800)"><span class="l-th">30 วัน เริ่มงานได้เร็วกว่านั้นถ้าเป็นงานฟรีแลนซ์ควบไปก่อน</span><span class="l-en">30 days. Sooner if we start with freelance work in parallel.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <section id="contact" style="border-top:2px solid var(--color-divider);padding:var(--sec-pad,96px) 0">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px">
+      <div style="font-size:11px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-accent-700)">07 / <span class="l-th">ติดต่อฉัน</span><span class="l-en">Contact me</span></div>
+      <h2 data-rv style="font-family:var(--font-heading);font-weight:800;font-size:clamp(32px,5vw,68px);line-height:1.02;letter-spacing:-0.035em;margin:24px 0 48px;max-width:20ch">
+        <span class="l-th">มีตำแหน่งที่คิดว่าเหมาะ? ส่งมาคุยได้เลย</span><span class="l-en">Got a role you think fits? Send it over.</span>
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));border-top:2px solid var(--color-divider);border-bottom:2px solid var(--color-divider)">
+        <a data-rv href="mailto:mint.thanaporn@example.com" style="padding:32px 24px 32px 0;border-right:2px solid var(--color-divider);color:var(--color-text);display:block">
+          <div style="font-size:10px;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-neutral-600);margin-bottom:10px">Email</div>
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:17px;letter-spacing:-0.01em;word-break:break-all">mint.thanaporn@example.com</div>
+        </a>
+        <a data-rv href="tel:+66812345678" style="padding:32px 24px;border-right:2px solid var(--color-divider);color:var(--color-text);display:block">
+          <div style="font-size:10px;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-neutral-600);margin-bottom:10px"><span class="l-th">โทรศัพท์</span><span class="l-en">Phone</span></div>
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:17px;letter-spacing:-0.01em">081 234 5678</div>
+        </a>
+        <div data-rv style="padding:32px 24px;border-right:2px solid var(--color-divider)">
+          <div style="font-size:10px;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-neutral-600);margin-bottom:10px">LINE ID</div>
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:17px;letter-spacing:-0.01em">@mintwork</div>
+        </div>
+        <div data-rv style="padding:32px 0 32px 24px;display:flex;align-items:center">
+          <a class="btn btn-primary" href="#" onClick="{{ downloadCV }}" style="text-decoration:none"><span class="l-th">ดาวน์โหลดเรซูเม่ (PDF)</span><span class="l-en">Download CV (PDF)</span></a>
+        </div>
+      </div>
+      <p style="font-size:13px;line-height:1.6;color:var(--color-neutral-600);margin:24px 0 0;max-width:56ch">
+        <span class="l-th">ตอบกลับภายใน 1 วันทำการ ข้อมูลติดต่อทั้งหมดในหน้านี้เป็นตัวอย่างสำหรับตอนนี้</span><span class="l-en">I reply within one working day. All contact details on this page are placeholders for now.</span>
+      </p>
+    </div>
+  </section>
+
+  <footer style="background:var(--color-accent);color:#fff;padding:88px 0 40px">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px">
+      <p data-rv style="font-family:var(--font-heading);font-weight:800;font-size:clamp(34px,6.2vw,84px);line-height:1.0;letter-spacing:-0.04em;margin:0;max-width:22ch;color:#fff">
+        <span class="l-th">มาทำอะไรที่คนอยากกดติดตามกันไหม</span><span class="l-en">Let's make something worth following.</span>
+      </p>
+      <div style="height:2px;background:var(--color-accent-300);margin:56px 0 24px"></div>
+      <div style="display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-100)">
+        <span>Mint · Thanaporn Sriwilai</span>
+        <span><span class="l-th">ข้อมูลตัวอย่างทั้งหมด</span><span class="l-en">All data is placeholder</span></span>
+        <span>Bangkok · 2026</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;defaultLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;th&quot;,&quot;en&quot;],&quot;default&quot;:&quot;th&quot;,&quot;tsType&quot;:&quot;'th' | 'en'&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;showSalary&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;rhythm&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;airy&quot;,&quot;compact&quot;],&quot;default&quot;:&quot;airy&quot;,&quot;tsType&quot;:&quot;'airy' | 'compact'&quot;,&quot;section&quot;:&quot;Layout&quot;}}">
+const LANG_KEY = 'mint-portfolio-lang';
+
+class Component extends DCLogic {
+  setLang(l) {
+    document.documentElement.setAttribute('data-lang', l);
+    try { localStorage.setItem(LANG_KEY, l); } catch (e) {}
+    if (window.ScrollTrigger) requestAnimationFrame(() => ScrollTrigger.refresh());
+  }
+
+  applyRhythm() {
+    const pad = (this.props.rhythm ?? 'airy') === 'compact' ? '64px' : '96px';
+    document.documentElement.style.setProperty('--sec-pad', pad);
+  }
+
+  componentDidUpdate() { this.applyRhythm(); }
+
+  componentDidMount() {
+    this.applyRhythm();
+    let saved = null;
+    try { saved = localStorage.getItem(LANG_KEY); } catch (e) {}
+    document.documentElement.setAttribute('data-lang', saved || this.props.defaultLang || 'th');
+
+    const start = () => {
+      if (!window.gsap || !window.ScrollTrigger) return setTimeout(start, 120);
+      gsap.registerPlugin(ScrollTrigger);
+      document.documentElement.classList.add('gsap-ready');
+
+      const mm = gsap.matchMedia();
+      mm.add({ reduce: '(prefers-reduced-motion: reduce)', full: '(prefers-reduced-motion: no-preference)' }, (ctx) => {
+        const reduce = ctx.conditions.reduce;
+
+        // Hero — clip-style line rise, staged
+        gsap.from('[data-hero]', {
+          yPercent: reduce ? 0 : 108, autoAlpha: reduce ? 0 : 1,
+          duration: reduce ? 0.3 : 0.85, ease: 'power3.out', stagger: reduce ? 0 : 0.08
+        });
+        gsap.from('[data-line]', { scaleX: 0, transformOrigin: 'left center', duration: reduce ? 0 : 1.1, ease: 'power2.out', delay: 0.15 });
+
+        // Section reveals — batched, primary y + opacity
+        ScrollTrigger.batch('[data-rv]', {
+          start: 'top 88%',
+          once: true,
+          batchMax: 6,
+          onEnter: (batch) => gsap.to(batch, {
+            autoAlpha: 1, y: 0, duration: reduce ? 0.25 : 0.6,
+            ease: 'power2.out', stagger: reduce ? 0 : 0.07, overwrite: true
+          })
+        });
+        gsap.set('[data-rv]', { y: reduce ? 0 : 22, autoAlpha: 0 });
+
+        // Skills progress rule
+        ScrollTrigger.create({
+          trigger: '#skills', start: 'top 60%', end: 'bottom 70%',
+          onUpdate: (self) => {
+            const bar = document.querySelector('[data-skillbar]');
+            if (bar) bar.style.width = (self.progress * 100).toFixed(1) + '%';
+          }
+        });
+
+        // Pinned horizontal week
+        const wrap = document.querySelector('[data-wkwrap]');
+        const track = document.querySelector('[data-wktrack]');
+        if (wrap && track && !reduce) {
+          const dist = () => Math.max(0, track.scrollWidth - window.innerWidth);
+          gsap.to(track, {
+            x: () => -dist(), ease: 'none',
+            scrollTrigger: {
+              trigger: wrap, pin: true, start: 'top top',
+              end: () => '+=' + (dist() + window.innerHeight * 0.4),
+              scrub: 0.6, invalidateOnRefresh: true, anticipatePin: 1
+            }
+          });
+        } else if (wrap) {
+          wrap.style.height = 'auto';
+          wrap.style.overflowX = 'auto';
+          if (track) track.style.height = 'auto';
+        }
+
+        // Career timeline — line draws with scroll, dots light up
+        const line = document.querySelector('[data-tlline]');
+        const items = gsap.utils.toArray('[data-tlitem]');
+        if (line) {
+          ScrollTrigger.create({
+            trigger: '#career', start: 'top 55%', end: 'bottom 75%',
+            onUpdate: (self) => { line.style.height = (self.progress * 100).toFixed(2) + '%'; }
+          });
+        }
+        items.forEach((item) => {
+          const dot = item.querySelector('[data-tldot]');
+          if (!dot) return;
+          ScrollTrigger.create({
+            trigger: item, start: 'top 70%', once: true,
+            onEnter: () => gsap.to(dot, {
+              backgroundColor: 'var(--color-accent)', scale: reduce ? 1 : 1.25,
+              duration: 0.35, ease: 'back.out(2)', yoyo: !reduce, repeat: reduce ? 0 : 1
+            })
+          });
+        });
+
+        return () => { document.documentElement.classList.remove('gsap-ready'); };
+      });
+
+      this._mm = mm;
+      window.addEventListener('load', () => ScrollTrigger.refresh());
+    };
+    start();
+  }
+
+  componentWillUnmount() {
+    if (this._mm) this._mm.revert();
+    if (window.ScrollTrigger) ScrollTrigger.getAll().forEach((t) => t.kill());
+  }
+
+  renderVals() {
+    return {
+      showSalary: this.props.showSalary ?? true,
+      setTH: () => this.setLang('th'),
+      setEN: () => this.setLang('en'),
+      downloadCV: (e) => {
+        e.preventDefault();
+        const th = document.documentElement.getAttribute('data-lang') !== 'en';
+        alert(th ? 'ตัวอย่างเท่านั้น — ยังไม่ได้แนบไฟล์เรซูเม่จริง' : 'Placeholder — the real CV file is not attached yet.');
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
